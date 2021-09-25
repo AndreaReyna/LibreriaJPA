@@ -97,7 +97,7 @@ public class Prestamo {
         if (fechaDevolucion != null) {
             fecha2 = formatter.format(fechaDevolucion);
         }
-        return "Prestamo{" + "id=" + id + ", fechaPrestamo=" + fecha1 + ", fechaDevolucion=" + fecha2 + ", libro=" + libro.getTitulo() + ", cliente=" + cliente.toString() + '}';
+        return String.format("%-10s%-16s%-16s%-50s%-20s%-20s", id, fecha1, fecha2, libro.getTitulo(), cliente.getNombre(), cliente.getApellido());
     }
 
 }

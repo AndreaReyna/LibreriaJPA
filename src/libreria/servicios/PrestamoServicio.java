@@ -29,11 +29,19 @@ public class PrestamoServicio {
             fecha.setDate(dia);
             fecha.setMonth(mes - 1);
             fecha.setYear(anio - 1900);
-
+            
+ 
+            Libro l = new Libro();
+            l.setEjemplaresRestantes(0);
+            while (l.getEjemplaresRestantes()<1) {
             ls.imprimirLibros();
             System.out.println("Ingrese el libro que desea segun su ISBN");
-            Libro l = ls.buscarLibroISBN(leer.nextInt());
-
+            l = ls.buscarLibroISBN(leer.nextInt());
+            if (l.getEjemplaresRestantes()<1) {
+                System.out.println("No hay ejemplares para prestar, elija otro libro.");
+            }  
+           }
+            
             cs.imprimirClientes();
             System.out.println("Ingrese su ID");
             Cliente c = cs.buscarClienteID(leer.nextInt());
@@ -47,7 +55,11 @@ public class PrestamoServicio {
             if (c == null) {
                 throw new Exception("El cliente es obligatorio");
             }
-
+            
+            l.setEjemplaresPrestados(l.getEjemplaresPrestados()+1);
+            l.setEjemplaresRestantes(l.getEjemplaresRestantes()-1);
+            ls.modificarLibro(l);
+            
             Prestamo p = new Prestamo();
             p.setFechaDevolucion(null);
             p.setFechaPrestamo(fecha);
@@ -102,7 +114,6 @@ public class PrestamoServicio {
                     System.out.println("La fecha de devolucion NO puede ser anterior al prestamo, reintente.");
                 }
             } while (p.getFechaDevolucion().before(p.getFechaPrestamo()));
-
             pd.modificarPrestamo(p);
 
         } catch (Exception e) {

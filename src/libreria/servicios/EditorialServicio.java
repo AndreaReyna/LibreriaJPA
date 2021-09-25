@@ -30,11 +30,11 @@ public class EditorialServicio {
                 System.out.println("Editorial creada correctamente!");
             } else {
                 if (editoriales.size() == 1) {
-                    System.out.println("La editorial ya existe " + editoriales.get(0).getId() + " " + editoriales.get(0).getNombre());
+                    System.out.println("La editorial ya existe \n" + editoriales.get(0).toString());
                 } else {
                     System.out.println("Lista de editoriales con ese nombre:");
                     for (Editorial e : editoriales) {
-                        System.out.println("Editorial: " + e.getId() + " " + e.getNombre());
+                        System.out.println(e.toString());
                     }
                 }
             }
@@ -54,7 +54,7 @@ public class EditorialServicio {
             } else {
                 for (Editorial e : editoriales) {
                     if (e.getAlta()) {
-                        System.out.println("Editorial: " + e.getId() + " " + e.getNombre());
+                        System.out.println(e.toString());
                     }
                 }
             }
@@ -72,7 +72,7 @@ public class EditorialServicio {
             List<Editorial> editoriales = ed.editorialPorNombre(nombre);
             for (Editorial e : editoriales) {
                 if (e.getAlta()) {
-                    System.out.println(e.getId() + " " + e.getNombre());
+                    System.out.println(e.toString());
                 }
             }
             if (editoriales.isEmpty()) {

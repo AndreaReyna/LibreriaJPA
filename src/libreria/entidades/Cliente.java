@@ -81,7 +81,7 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return "Cliente{" + "id=" + id + ", documento=" + documento + ", nombre=" + nombre + ", apellido=" + apellido + ", telefono=" + telefono + '}';
+        return String.format("%-16s%-16s%-30s%-30s%-30s", id, documento, nombre, apellido, telefono);
     }
 
 }

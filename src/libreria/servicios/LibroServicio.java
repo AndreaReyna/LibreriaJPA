@@ -63,8 +63,7 @@ public class LibroServicio {
             } else {
                 for (Libro l : libros) {
                     if (l.getAlta() && l.getAutor().getAlta() && l.getEditoral().getAlta()) {
-                        System.out.println(l.getTitulo() + " - " + l.getIsbn() + " Autor: " + l.getAutor().getNombre() + " Editorial: " + l.getEditoral().getNombre());
-                        System.out.println("--------------------------------");
+                        System.out.println(l.toString());
                     }
                 }
             }
@@ -79,11 +78,13 @@ public class LibroServicio {
                 System.out.println("Ingrese el ISBN que desea buscar");
                 aux = leer.nextInt();
             }
-
-            Libro libro = ld.LibroPorISBN(Long.valueOf(aux));
-            System.out.println(libro.getIsbn() + " " + libro.getTitulo() + " " + libro.getAutor().getNombre() + " " + libro.getAnio());
-            if (libro == null) {
+            Libro libro = null;
+           
+            if (libro == null || libro.getAlta()==false) {
                 System.out.println("No se encontró el libro");
+            }else{
+                 libro = ld.LibroPorISBN(Long.valueOf(aux));
+            System.out.println(libro.toString());
             }
             return libro;
         } catch (Exception e) {
@@ -103,7 +104,7 @@ public class LibroServicio {
             } else {
                 for (Libro l : libros) {
                     if (l.getAlta() && l.getAutor().getAlta() && l.getEditoral().getAlta()) {
-                        System.out.println(l.getIsbn() + " " + l.getTitulo() + " " + l.getAutor().getNombre() + " " + l.getAnio());
+                        System.out.println(l.toString());
                     }
                 }
             }
@@ -124,7 +125,7 @@ public class LibroServicio {
             } else {
                 for (Libro l : libros) {
                     if (l.getAlta() && l.getAutor().getAlta() && l.getEditoral().getAlta()) {
-                        System.out.println(l.getIsbn() + " " + l.getTitulo() + " " + l.getAutor().getNombre() + " " + l.getAnio());
+                        System.out.println(l.toString());
                     }
                 }
             }
@@ -145,7 +146,7 @@ public class LibroServicio {
             } else {
                 for (Libro l : libros) {
                     if (l.getAlta() && l.getAutor().getAlta() && l.getEditoral().getAlta()) {
-                        System.out.println(l.getIsbn() + " " + l.getTitulo() + " " + l.getAutor().getNombre() + " " + l.getAnio());
+                        System.out.println(l.toString());
                     }
                 }
             }
@@ -153,6 +154,10 @@ public class LibroServicio {
             throw e;
         }
     }
+    
+    public void modificarLibro(Libro libro) throws Exception{
+        ld.modificarLibro(libro);
+    } 
 
     public void bajaLibro() throws Exception {
         try {

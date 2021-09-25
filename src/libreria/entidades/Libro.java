@@ -114,5 +114,14 @@ public class Libro {
     public void setEditoral(Editorial editoral) {
         this.editoral = editoral;
     }
-
+    
+      @Override
+    public String toString() {
+        String aux = "No disponible";
+        if (alta) {
+            aux = "Disponible";
+        }
+        return String.format("%-12s%-50s%-25s%-25s%-10s%-8s%-8s%-8s%-16s%n", isbn, titulo, autor.getNombre(), editoral.getNombre(), anio, ejemplares, ejemplaresPrestados, ejemplaresRestantes, aux);
+    }
+    
 }

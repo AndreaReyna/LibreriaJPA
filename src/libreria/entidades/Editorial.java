@@ -49,4 +49,12 @@ public class Editorial {
         this.alta = alta;
     }
 
+    @Override
+    public String toString() {
+        String aux = "No disponible";
+        if (alta) {
+            aux = "Disponible";
+        }
+        return String.format("%-16s%-40s%-25s", id, nombre, aux);
+    }
 }

@@ -26,11 +26,11 @@ public class AutorServicio {
             } else {
 
                 if (autores.size() == 1) {
-                    System.out.println("Ya existe ese autor: " + autores.get(0).getId() + " " + autores.get(0).getNombre());
+                    System.out.println("Ya existe ese autor: \n" + autores.get(0).toString());
                 } else {
                     System.out.println("Lista de autores con ese nombre:");
                     for (Autor a : autores) {
-                        System.out.println("ID: " + a.getId() + " Nombre: " + a.getNombre());
+                        System.out.println(a.toString());
                     }
                 }
             }
@@ -48,7 +48,7 @@ public class AutorServicio {
             } else {
                 for (Autor a : autores) {
                     if (a.getAlta()) {
-                        System.out.println("Autor: " + a.getId() + " " + a.getNombre());
+                        System.out.println(a.toString());
                     }
                 }
             }
@@ -66,8 +66,7 @@ public class AutorServicio {
             List<Autor> autores = ad.autorPornombre(nombre);
             for (Autor a : autores) {
                 if (a.getAlta()) {
-                    System.out.println(a.getId() + " " + a.getNombre());
-                    System.out.println("---");
+                    System.out.println(a.toString());
                 }
             }
             if (autores.isEmpty()) {
